@@ -1,0 +1,26 @@
+[
+    {
+        "id": 0,
+        "titulo": "Detalhes da conta",
+        "descricao": "Informação pessoal, e-mail",
+        "rota": "/detalhes"
+    },
+    {
+        "id": 1,
+        "titulo": "Editar Perfil",
+        "descricao": "Alterar e-mail, nome, password",
+        "rota": "/editarPerfil"
+    },
+    {
+        "id": 2,
+        "titulo": "Instituição",
+        "descricao": "Informações cadastradas, espaços disponíveis",
+        "rota": "/instituicao"
+    },
+    {
+        "id": 3,
+        "titulo": "Segurança",
+        "descricao": "Alterar password",
+        "rota": "/alterarPassword"
+    }
+]

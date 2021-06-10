@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Envelope from './API Requests/Envelope';
+import OverviewPage from './Components/OverviewPage';
+import Header from './Components/Header';
+import Menu from './Components/Menu'
+import '../src/CSS/style.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Espacos from './Components/EspacosPage'
+import CadastrarLocal from './Components/CadastrarEspaco'
+import AlertasPage from './Components/AlertasPage';
+import Associados from './Components/AssociadosPage'
+import Configuracoes from './Components/ConfiguracoesPage'
+import user from './Files/user.json'
 
-function App() {
+export default() => {
+  // A obter os dados da API
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="wrapper">
+        <Header user={user}/>
+        <Menu/>
+        <div className="paths">
+          <Route path="/" exact component={OverviewPage}></Route>
+          <Route path="/espacos" component={Espacos}></Route>
+          <Route path="/cadastrarEspaco" component={CadastrarLocal}></Route>
+          <Route path="/alertas" component={AlertasPage}></Route>
+          <Route path="/associados" component={Associados}></Route>
+          <Route path="/configuracoes" component={Configuracoes}></Route>
+        </div>
+      </div>
+    </Router>
   );
 }
-
-export default App;

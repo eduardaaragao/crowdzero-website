@@ -1,0 +1,117 @@
+.table-labels{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-items{
+    display: flex;
+    align-items: center;
+}
+
+.table-title:nth-child(5){
+  margin-left: 30px;
+}
+
+.table-title{
+    font-size: 0.8125rem;
+    color: $darkGreenColor;
+    text-transform: uppercase;
+    word-spacing: 100;
+    font-weight: 600;
+}
+
+.table-title:not(:last-child){
+  margin-right: 70px;
+}
+
+.table-row{
+    width: 80px;
+    margin-right: 30px;
+
+    &.title{
+        text-align: center;
+        font-size: 0.9375rem;
+
+        &.altaocupacao, &.desinfec{
+            font-size: 0.75rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            width: 150px;
+            padding: 5px;
+        }
+
+        &.desinfec{
+            color: #CDB3D4;
+            background-color: rgba($color: #CDB3D4, $alpha: 0.12);
+        }
+
+        &.altaocupacao{
+            color: #F57272;
+            background-color: rgba($color: #F57272, $alpha: 0.12);
+        }
+
+        &.place{
+            min-width: 105px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        &.status{
+            text-transform: uppercase;
+            width: 140px;  
+        }
+    }
+}
+
+  /* Hide the browser's default checkbox */
+  .container input {
+    opacity: 0;
+    margin-bottom: 35px;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    cursor: pointer;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border: 2px solid #68B2A0;
+    border-radius: 100%;
+    margin-left: 80px;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #56C596;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: '';
+    margin-left: 5px;
+    display: none;
+    border: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+@keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

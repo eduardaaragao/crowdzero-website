@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "local": "Auditório 1",
+      "alta": 112,
+      "média": 154,
+      "baixa": 187
+    },
+    {
+      "id": 2,
+      "local": "Auditório 2",
+      "alta": 184,
+      "média": 156,
+      "baixa": 168
+    },
+    {
+      "id": 3,
+      "local": "Biblioteca",
+      "alta": 134,
+      "média": 107,
+      "baixa": 76
+    },
+    {
+      "id": 4,
+      "local": "Cantina",
+      "alta": 47,
+      "média": 104,
+      "baixa": 52
+    },
+    {
+      "id": 5,
+      "local": "Sala 1",
+      "alta": 189,
+      "média": 42,
+      "baixa": 39
+    },
+    {
+      "id": 6,
+      "local": "Sala 2",
+      "alta": 181,
+      "média": 116,
+      "baixa": 155
+    },
+    {
+      "id": 7,
+      "local": "Sala 3",
+      "alta": 143,
+      "média": 76,
+      "baixa": 190
+    }
+  ]

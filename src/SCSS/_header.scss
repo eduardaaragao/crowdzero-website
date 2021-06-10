@@ -1,0 +1,51 @@
+header{
+    height: 76px;
+    background-color: $primaryColor;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+
+    .header--elements{
+        align-items: center;
+        display: flex;
+        width: 290px;
+        float: right;
+        margin-top: 16px;
+        margin-right: 33px;
+    }
+
+    .header--info{
+        margin-right: 24px;
+    }
+    
+    .header--userName{
+        font-size: 0.75rem;
+        color: $white;
+    }
+    
+    .header--admin{
+        font-size: 0.6875rem;
+        color: $primaryLightColor;
+    }
+    
+    .header--userPhoto{
+        width: 54px;
+        height: 55px;
+        border-radius: 50%;
+        margin-right: 14px;
+    }
+    
+    .header--dropdown{
+        cursor: pointer;
+        color: $white;
+        margin-right: 52px;
+    }
+    
+    .header--notifications{
+        color: $white;
+        cursor: pointer;
+    }
+
+}
+
+

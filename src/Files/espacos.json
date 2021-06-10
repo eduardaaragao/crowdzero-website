@@ -1,0 +1,23 @@
+[
+    {
+         "id": 1, "name": "Laboratório 1" 
+    },
+
+    { 
+        "id": 2, "name": "Laboratório 2"
+     },
+
+    {
+         "id": 3, "name": "Auditório 1" 
+    },
+    
+    { "id": 4, "name": "Auditório 2" },
+    { "id": 5, "name": "Biblioteca" },
+    { "id": 6, "name": "Cantina" },
+    { "id": 7, "name": "Secretaria" },
+    { "id": 8, "name": "Sala 1" },
+    { "id": 9, "name": "Sala 11" },
+    { "id": 10, "name": "Sala 12" },
+    { "id": 11, "name": "Sala 13" },
+    { "id": 12, "name": "Sala 14" }
+]

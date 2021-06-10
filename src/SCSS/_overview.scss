@@ -1,0 +1,195 @@
+.overview--section{
+    height: 100vh;
+    padding-left: 160px;
+    padding-top: 91px;
+
+    h1{
+      font-size: 1.6875rem;
+      color: $primaryBlueColor;
+      margin-bottom: 15px;
+    }
+
+    p{
+      font-size: 0.8125rem;
+      color: $primaryBlueColor;
+      opacity: 0.65;
+      margin-bottom: 25px;
+    }
+}
+
+  .overview--item {
+    height: 96px;
+    width: 179px;
+    border-radius: 0px 20px 20px 0px;
+    align-self: flex-start;
+    position: relative;
+
+    &.light-red{
+      background: $lightRed;
+    }
+
+    &.light-green{
+      background: $lightGreen;
+    }
+
+    &.light-yellow{
+      background: $lightYellow;
+    }
+    
+    &.light-light-green{
+      background: $light-lightGreen;
+    }
+
+    &.light-purple{
+      background: $lightPurple;
+    }
+  }
+
+  .rectangle{
+    background-color: $primaryLightColor;
+    height: 60px;
+    margin-bottom: 1.5px;
+    margin-left: 26px;
+    margin-right: 23px;
+    opacity: 0.24;
+    width: 3px;
+  }
+
+  .overview--wrapper{
+    display: flex;
+    align-items: center;
+  }
+
+  .overview--charts{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .overview--dados {
+    align-items: flex-end;
+    display: flex;
+    min-width: 1109px;
+    margin-bottom: 36px;
+  }
+
+  .overview--title {
+    font-size: 1rem;
+    color: $primaryBlueColor;
+    left: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 16px;
+    position: absolute;
+    top: 22px;
+  }
+  
+  .overview--statistics{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .overview--number {
+    font-size: 1.625rem;
+    font-weight: 700;
+    left: 20px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 46px;
+    white-space: nowrap;
+
+    &.green{
+      color: $cGreen;
+    }
+
+    &.red{
+      color: $cRed;
+    }
+
+    &.yellow{
+      color: $cYellow;
+    }
+
+    &.light-green{
+      color: $cLightgreen;
+    }
+
+    &.purple{
+      color: $cPurple;
+    }
+  }
+  
+  .grafico-topbar{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .graphtitle{
+      font-size: 1rem;
+      color: $primaryBlueColor;
+      margin-right: 10px;
+  }
+
+  .grafico-labels{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .label-name{
+    margin-right: 65px;
+    font-size: 0.875rem;
+    color: #7F7D8F;
+  }
+
+  .dot, .inner-dot {
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .dot{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    height: 17px;
+    width: 17px;
+    margin-right: 7px;
+
+    &.red{
+      border-color:#F57272;
+    }
+
+    &.yellow{
+      border-color:#FFCF5C;
+    }
+
+    &.green{
+      border-color: #82D197;
+    }
+  }
+
+  .inner-dot{
+    margin-bottom: 7px;
+    height: 9px;
+    width: 9px;
+
+    &.red{
+      background: #F57272;
+    }
+
+    &.yellow{
+      background: #FFCF5C;;
+    }
+
+    &.green{
+      background: #82D197;;
+    }
+  }
+
+  .divisor-horizontal{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    border: 1px solid $primaryLightColor;
+  }

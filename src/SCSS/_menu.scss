@@ -1,0 +1,60 @@
+.menu--wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 137px;
+    background-color: $primaryColor;
+    position: fixed;
+}
+
+nav{
+    background-color: $primaryColor;
+    margin-top: 76px;
+    padding-top: 35px;
+    height: inherit;
+    text-align: center;
+}
+
+.menu--item{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 0px 10px 50px 10px;
+    display: flex;
+    flex-direction: column;
+    color: $primaryLightColor;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    transition: 0.3s ease-in-out;
+
+    &.active{
+        color: $primaryBlueColor;
+    }
+}
+
+.menu--item:hover{
+    color: $primaryBlueColor;
+}
+
+.menu--icon{
+    margin-bottom: 13px;
+    
+
+    &.active{
+        color: $primaryBlueColor;
+    }
+}
+
+.menu--tab{
+    color: inherit;
+    font-size: 0.6875rem;
+    font-weight: 600;
+}
+
+.menu--activeborder{
+    z-index: -1;
+    position: absolute;
+    margin-top: 4px;
+    margin-right: -30px;
+}

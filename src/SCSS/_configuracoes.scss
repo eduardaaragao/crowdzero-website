@@ -1,0 +1,187 @@
+.menu--configuracoes{
+    margin-bottom: 35px;
+    width: 347px;
+    h4{
+        color: rgba($color: #2C6975, $alpha: 0.50);
+        transition: all 0.3s ease;
+    }
+
+    .paragraph{
+        font-size: 0.9375rem;
+        color: rgba($color: #2C6975, $alpha: 0.50);
+        transition: all 0.3s ease;
+    }
+
+    hr{
+        border: 1px solid #E0ECDE ;
+        opacity: 0.5;
+        margin-top: 20px;
+    }
+
+    .icone-configuracoes{
+        color: #2C6975;
+        opacity: 0.5;
+    }
+}
+
+.menu--configuracoes:hover{
+    h4{
+        color: #2C6975;
+    }
+    .paragraph{
+        color: #2C6975;
+    }
+    cursor: pointer;
+}
+
+.clicked{
+    h4{
+        color: #2C6975;
+    }
+    .paragraph{
+        color: #2C6975;
+    }
+
+    hr{
+        border: 1px solid #2C6975;
+        opacity: 1;
+    }
+
+    .icone-configuracoes{
+        opacity: 1;
+    }
+}
+
+.configuracoes--page{
+    height: 100%;
+    width: 940px;
+    align-items: center;
+    justify-content: center;
+
+    h3{
+        color: $darkGreenColor;
+    }
+
+    .imagem-perfil{
+        text-align: center;
+
+    }
+    position: absolute;
+    left: 37%;
+    top: 12%;
+
+    img {
+        margin-top: 30px;
+        width: 129px;
+        height: 129px;
+        border-radius: 50%;
+        margin-right: 14px;
+    }
+}
+
+.vertical-line{
+  border-left: 1px solid $primaryLightColor;
+  height: 100%;
+  position: absolute;
+  left: 35%;
+  margin-left: -3px;
+  top: 0;
+}
+
+.circulo{
+    margin-right: 25px;
+    width: 84px;
+    height: 84px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icone--circulo{
+        color: #fff;
+        font-size: 45px;
+    }
+}
+
+.circulo:not(:last-child){
+    margin-bottom: 35px;
+}
+
+.input--configuracoes{
+    width: 377px;
+    margin: 40px;
+}
+
+/**/
+.containerCheck {
+    width: 420px;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .containerCheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmarkClass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border: 2px solid #56C596;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .containerCheck input:checked ~ .checkmarkClass {
+    background-color:#56C596;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmarkClass:after {
+    content: "";
+    position: absolute;
+  }
+  
+  /* Show the checkmark when checked */
+  .containerCheck input:checked ~ .checkmarkClass:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .containerCheck .checkmarkClass:after {
+    text-align: center;
+    left: 2px;
+    width: 3px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+
+  .icone{
+      cursor: pointer;
+      color: #56C596;
+      position: absolute;
+      top: 65px;
+      left: 215px;
+  }
+
+  .password-field{
+      width: 250px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+  }

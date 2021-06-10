@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "descricao": "Associados",
+        "quantidade": 80,
+        "cor": "green"
+    },
+    {
+        "id": 2,
+        "descricao": "Alta Ocupação",
+        "quantidade": 6,
+        "cor": "red"
+    },
+    {
+        "id": 3,
+        "descricao": "Média Ocupação",
+        "quantidade": 5,
+        "cor": "yellow"
+    },
+    {
+        "id": 4,
+        "descricao": "Baixa Ocupação",
+        "quantidade": 10,
+        "cor": "light-green"
+    },
+    {
+        "id": 5,
+        "descricao": "Espaços Criados",
+        "quantidade": 10,
+        "cor": "purple"
+    }
+]
