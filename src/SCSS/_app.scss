@@ -7,6 +7,11 @@
   text-decoration: none;
   list-style: none;
   font-family: $fontFamily;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* width */
@@ -29,6 +34,12 @@ p{
 ::-webkit-scrollbar-thumb {
   background: $primaryColor;
   border-radius: 6px;
+}
+
+.btn-botao{
+  &:hover{
+    opacity: 0.75;
+  }
 }
 
 .paragraph{
@@ -65,10 +76,26 @@ input{
   height: 40px;
 }
 
+.whiteboard{
+  box-shadow: 34px 34px 89px rgba(50, 157, 156, 0.13), 34px 34px 89px rgba(50, 157, 156, 0.13);
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: left;
+}
+
 input:focus, textarea:focus{
   border:1px #56C596 solid;
   border-radius: 21px;
   outline: none;
+}
+
+.input--error{
+  border:1px $cRed solid;
 }
 
 .button-align{

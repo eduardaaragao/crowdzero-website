@@ -1,33 +1,74 @@
-import Envelope from './API Requests/Envelope';
-import OverviewPage from './Components/OverviewPage';
-import Header from './Components/Header';
-import Menu from './Components/Menu'
-import '../src/CSS/style.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Espacos from './Components/EspacosPage'
-import CadastrarLocal from './Components/CadastrarEspaco'
-import AlertasPage from './Components/AlertasPage';
-import Associados from './Components/AssociadosPage'
-import Configuracoes from './Components/ConfiguracoesPage'
-import user from './Files/user.json'
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import LoginPage from './Components/LoginPage'
+import Registar from './Components/Register'
+import Nav from './Components/Nav'
+import HomePage from './Components/Home'
+import React, {Component} from 'react'
+import axios from 'axios'
+import './CSS/style.css'
+import OverviewPage from './Components/OverviewPage'
+import EspacosPage from './Components/EspacosPage'
+import AlertasPage from './Components/AlertasPage'
+import AssociadosPage from './Components/AssociadosPage'
+import ConfiguracoesPage from './Components/ConfiguracoesPage'
+import ProtectedRoute from './Components/Routes/private'
+import UserHome from './Components/Routes/home'
+import WelcomePage from './Components/WelcomePage'
 
-export default() => {
-  // A obter os dados da API
+export default class App extends Component {
+  state = {}
+  setUser = user =>{
+    this.setState({
+        user: user
+      })      
+  }
 
-  return (
-    <Router>
-      <div className="wrapper">
-        <Header user={user}/>
-        <Menu/>
-        <div className="paths">
-          <Route path="/" exact component={OverviewPage}></Route>
-          <Route path="/espacos" component={Espacos}></Route>
-          <Route path="/cadastrarEspaco" component={CadastrarLocal}></Route>
-          <Route path="/alertas" component={AlertasPage}></Route>
-          <Route path="/associados" component={Associados}></Route>
-          <Route path="/configuracoes" component={Configuracoes}></Route>
-        </div>
-      </div>
-    </Router>
-  );
+  getUser = async (data) => {
+      try{
+       await axios.get('gestor/get', {params: data}).then(
+          res => {
+            this.setState({
+              user: res.data.data
+            })
+          }
+        )
+      }catch(e){
+        alert(e)
+    }
+  }
+
+  componentDidMount(){
+    const data = {
+      id: localStorage.getItem("id")
+    }
+    
+    if (data.id){
+      this.getUser(data)
+    }
+  }
+
+  render() {
+    return (
+      <Router>
+          <div>
+            <Switch>
+              <Route exact path="/">
+                {this.state.user ? <Redirect to='/home/overview'/> : <WelcomePage/>}
+                
+              </Route>
+
+              <Route path="/login">
+                <LoginPage setUser={this.setUser}/>
+              </Route>
+
+              <Route path="/registar">
+                <Registar/>
+              </Route>
+
+              <ProtectedRoute path="/home" component={() => <UserHome user={this.state.user} setUser={this.setUser}/>} isAuth={this.state.user}/>
+            </Switch> 
+          </div>
+      </Router>
+    );
+  }
 }

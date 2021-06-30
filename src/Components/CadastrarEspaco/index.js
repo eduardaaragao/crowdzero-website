@@ -4,7 +4,6 @@ import Etiqueta from '../Etiquetas'
 import CadastrarLocalBox from './component'
 
 const CadastrarLocal = () => {
-
     /* Card de Informações */
     const styleTitle = {
         fontSize: '1.25rem',

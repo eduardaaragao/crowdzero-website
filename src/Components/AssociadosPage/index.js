@@ -1,29 +1,75 @@
-import React from 'react'
-import associados from '../../Files/associados.json'
+import React,{Component} from 'react'
 import Button from '../Button'
 import Search from '../SearchBar'
+import axios from 'axios'
 
-export default class AssociadosPage extends React.Component {
+export default class AssociadosPage extends Component {
     constructor(props){
         super(props)
-        this.state ={
-            listAssociados: [],
-            filter: ''            
+        this.state = {
+            associados: [],
+            filter: '',
+            updated: false           
+        }
+    }
+
+    getAssociados = async () => {
+        const id = localStorage.getItem('instituicao')
+
+        const data = {
+            id: id
+        }
+
+        if (data.id){
+            try{
+                const res = await axios.get('associacao/list', {params: data})
+                this.setState({
+                    associados: res.data.data
+                })
+            }catch(e){
+                alert(e)
+            }
         }
     }
 
     componentDidMount(){
-        this.setState({listAssociados: associados})
+        this.getAssociados()
+    }
+
+    handleUpdate = () => {
+        this.setState({
+            updated: !this.state.updated
+        })
+    }
+    
+    componentDidUpdate(){
+        if (this.state.updated){
+            this.getAssociados()
+            this.handleUpdate()
+        }
     }
 
     onChange = (e) => {
         this.setState({filter: e.target.value})
     }
 
+    onDelete = async (e) => {
+        const data = {
+            id: e
+        }
+
+        try{
+            await axios.post('associado/delete', data)
+        }catch(e){
+            alert(e)
+        }
+        this.handleUpdate()
+    }
+
     render() {
-        let {filter, listAssociados} = this.state
-        let dataSearch = listAssociados.filter(item=>{
-            return Object.keys(item).some(key => item.nome.toString().toLowerCase().includes(filter.toLowerCase()))
+        let {filter, associados} = this.state
+        let dataSearch = associados.filter(item =>{
+            return Object.keys(item).some(key => item.nome.toLowerCase().includes(filter.toLowerCase()))
         })
 
         return (
@@ -47,7 +93,7 @@ export default class AssociadosPage extends React.Component {
                     </thead>
                     
                     <tbody>
-                        {dataSearch.map((data =>{
+                    {dataSearch.map((data =>{
                             return(
                                 <tr key={data.id}>
                                     <th>{data.id}</th>
@@ -56,7 +102,7 @@ export default class AssociadosPage extends React.Component {
                                     <td>{data.reportes}</td>
                                     <td>{data.ultimo}</td>
                                     <td>
-                                       <Button onClick={null} colorFrom='#F57272' colorTo='#F57272' name="Remover"/>
+                                       <Button onClick={() => this.onDelete(data.id)} colorFrom='#F57272' colorTo='#F57272' name="Remover"/>
                                     </td>
                                 </tr>
                             )
@@ -68,3 +114,5 @@ export default class AssociadosPage extends React.Component {
     }
 }
 
+/**
+                         */

@@ -67,6 +67,8 @@ class ImageUploader extends React.Component {
     handleAddImage(e) {
        e.preventDefault();
        let file = this.image.files[0];
+
+       if (!file) return
        
        // Validação se é do tipo 'imagem'
        let fileType = this.image.files[0].type.split('/')[0];

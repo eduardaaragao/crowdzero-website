@@ -1,16 +1,24 @@
 import React from 'react'
 
-const LinhaOcupacao = ({width}) => {
+const LinhaOcupacao = ({estado}) => {
 
-    function getColor(){
-        let percentagem = width.replace('%', '')
-        parseInt(percentagem)
-        if (percentagem <= 40){
+    /*function getColor(){
+        if (ocupacao === 'alto'){
             return '#82D197'
-        }else if(percentagem >= 50 && percentagem <=70){
+        }else if(ocupacao === 'medio'){
             return '#FFCF5C'
         }else{
             return '#F57272'
+        }
+    }*/
+
+    function getColor(){
+        if (estado === 1){
+            return '#F57272'
+        }else if (estado === 2){
+            return '#FFCF5C'
+        }else{
+            return '#82D197'
         }
     }
 
@@ -20,7 +28,8 @@ const LinhaOcupacao = ({width}) => {
         borderRadius: '6px',
         marginBottom: '22px',
         position: 'relative',
-        width: `${width}`
+        width: '100%'
+       // width: `${width}`
     }
 
     const styleUpperLine = {

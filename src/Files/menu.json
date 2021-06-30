@@ -1,0 +1,32 @@
+[
+        {
+            "id": 1,
+            "descricao": "Overview",
+            "rota": "/home/overview"
+        },
+        {
+            "id": 2,
+            "descricao": "Espaços",
+            "rota": "/home/espacos"
+        },
+        {
+            "id": 3,
+            "descricao": "Alertas",
+            "rota": "/home/alertas"
+        },
+        {
+            "id": 4,
+            "descricao": "Associados",
+            "rota": "/home/associados"
+        },
+        {
+            "id": 5,
+            "descricao": "Configurações",
+            "rota": "/home/configuracoes"
+        },
+        {
+            "id": 6,
+            "descricao": "Encerrar Sessão",
+            "rota": "/home/logout"
+        }
+    ]

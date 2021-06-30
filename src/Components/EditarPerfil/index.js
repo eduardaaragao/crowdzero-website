@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import user from '../../Files/user.json'
 import Button from '../Button'
+import axios from 'axios'
 
 const EditarPerfil = () => {
     const [primeiroNome, setprimeiroNome] = useState('')
@@ -15,8 +16,23 @@ const EditarPerfil = () => {
         settelemovel('')
     }
 
-    const onSave = () => {
-        console.log("Salvar Alterações")
+    const onUpdate = async () => {
+        const id = localStorage.getItem('id')
+        const data = {
+            nome: primeiroNome + ' ' + ultimoNome,
+            email: email
+        }
+
+        try{
+            const res = axios.post('gestor/update', data, {params: {id}})
+            if (res){
+                console.log(res)
+            }
+
+        }catch(e){
+            console.log(e)
+        }
+
     }
 
     return (
@@ -67,7 +83,7 @@ const EditarPerfil = () => {
 
             <div style={{display:"flex", alignItems:"center", float:"right", paddingBottom:"100px"}}>
                 <p style={{textTransform:"uppercase", fontWeight:"bold", cursor:"pointer", fontSize:"0.725rem", marginRight:"20px", color:"#329D9C"}} onClick={onClear}>Descartar Alterações</p>
-                <Button name="salvar alterações" onClick={onSave}/>
+                <Button name="salvar alterações" onClick={onUpdate}/>
             </div>
         </div>
     )

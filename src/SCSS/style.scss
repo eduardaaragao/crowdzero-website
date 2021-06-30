@@ -1,4 +1,5 @@
 @import 'variables';
+@import "mixins";
 @import 'app';
 @import 'header';
 @import 'overview';
@@ -7,4 +8,10 @@
 @import 'table';
 @import 'espacos';
 @import 'uploadImage';
-@import 'configuracoes'
+@import 'configuracoes';
+@import 'login';
+@import 'headerPage';
+@import 'registar';
+@import 'hero';
+@import 'comofunciona';
+@import 'equipa';

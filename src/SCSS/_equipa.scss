@@ -1,0 +1,34 @@
+.equipa--wrapper{
+    background-color: $veryLightGray;
+    padding: 30px;
+
+    h1{
+        color: $primaryBlueColor;
+        font-size: 2.30rem;
+        font-weight: 300;
+        margin-bottom: 30px;
+    }
+}
+
+.equipa--imagem{
+    &:hover{
+        opacity: 0.5;
+    }
+}
+
+.equipa--items{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .equipa--item{
+        color: $primaryBlueColor;
+        font-size: 0.875rem;
+
+        &.nome{
+            text-transform: uppercase;
+            letter-spacing: 0.5;
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,0 +1,180 @@
+.header{
+    // Hamburger Open Styles
+    &.open{
+        .overlay{
+            display: block;
+        }
+        .header__toggle{
+            > span:first-child{
+                transform: rotate(45deg);
+            }
+
+            > span:nth-child(2){
+                opacity: 0;
+            }
+
+            >span:last-child{
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    .overlay{
+        opacity: 0;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background-image: linear-gradient($primaryBlueColor, transparent);
+    }
+
+    nav{
+        position: relative;
+        background-color: $white;
+        padding-top: 0;
+        margin-top: 0;
+        padding-bottom: 1.0625rem;
+    }
+
+    &__toggle{ // Mobile Menu Toggle
+        > span{
+            display: block;
+            width: 26px;
+            height: 2px;
+            background-color: $primaryBlueColor;
+            transition: all 300ms ease-in-out;
+            transform-origin: 3px 1px;
+
+            &:not(:last-child){
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    &__links{
+        a{
+            position: relative;
+            font-size:0.875rem;
+            color: $primaryBlueColor;
+            transition: color 300ms ease-in-out; 
+            
+
+            &:not(:last-child){
+                margin-right: 32px;
+            }
+
+            &:before{
+                content: "";
+                position: absolute;
+                display: block;
+                height: 5px;
+                left: 0;
+                right: 0;
+                bottom: -30px;
+                background: linear-gradient(to right, $primaryLightColor, $primaryColor);
+                opacity: 0;
+                transition: opacity 300ms ease-in-out;
+            }
+
+            &:hover{
+                color: $primaryBlueColor;
+                &:before{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__menu{
+        position: absolute;
+        width: calc(100% - 3rem);
+        left: 50%;
+        transform: translateX(-50%);
+        background: $cGreen;
+        margin-top: 1.5rem;
+        padding: 1.625rem;
+        border-radius: 5px;
+
+        a{
+            color: $primaryBlueColor;
+            padding: 0.625rem;
+            display: block;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+}
+
+
+// Visibility
+.hide-for-mobile{
+    // Hide for tablet and mobile devices
+    @include breakpoint-down(medium){
+        display: none;
+    }
+}
+
+.hide-for-desktop{
+    // Hide for the desktop viewport widths
+    @include breakpoint-up(large){
+        display: none;
+    }
+}
+
+.has-fade{
+    visibility: hidden;
+}
+
+.flex{
+    display: flex;
+
+    &-jc-sb{
+        justify-content: space-between;
+    }
+
+    &-jc-c{
+        justify-content: center;
+    }
+
+    &-ai-c{
+        align-items: center;
+    }
+}
+
+.mycontainer{
+    max-width: 69.375rem;
+    margin: 0 auto;
+
+    &--pall{
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+        padding-left: 1.5rem;
+        padding-right:  1.5rem;
+    }
+
+    &--py{
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+    }
+
+    &--px{
+        padding-left: 1.5rem;
+        padding-right:  1.5rem;
+    }
+    &--pt{
+        padding-top: 2.25rem;
+    }
+
+    &--pb{
+        padding-bottom: 2.25rem;
+    }
+
+    &--pl{
+        padding-left: 1.5rem;
+    }
+
+    &--pr{
+        padding-right:  1.5rem;
+    }
+}

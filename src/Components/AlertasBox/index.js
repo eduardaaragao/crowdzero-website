@@ -21,23 +21,23 @@ export default({data, onDelete, onClick}) => {
   statusColors.set('Alta Ocupação', 'altaocupacao')
 
   const pageData = [
-    <>
-    <div className="table-labels">
-            {labels.map((l) =>
-              <p key={l} className="table-title">{l}</p>
-            )}
+    <div key="alerta-data">
+        <div className="table-labels">
+                {labels.map((l) =>
+                  <p key={l} className="table-title">{l}</p>
+                )}
+        </div>
+        
+        <List
+          list={data}
+          statusColors={statusColors}
+          onDelete={onDelete}
+        />
+        
+        <div className="button-align">
+          <Button onClick={onClick} name="Ver mais" colorFrom="#7BE495" colorTo="#329D9C"/>
+        </div>
     </div>
-    
-    <List
-      list={data}
-      statusColors={statusColors}
-      onDelete={onDelete}
-    />
-    
-    <div className="button-align">
-      <Button onClick={onClick} name="Ver mais" colorFrom="#7BE495" colorTo="#329D9C"/>
-    </div>
-    </>
   ]
 
   return <Wrapper data={pageData} width='fit-content' padding='20px' height='fit-content'/>

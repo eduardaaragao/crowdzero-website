@@ -5,8 +5,12 @@ import Whiteboard from '../../Whiteboard'
 /* Gráfico de Reportes por Local */
 
 const LineChart = ({data}) => {
+    const style = {
+        width: '100%',
+        height: '100%'
+    }
     const pageData = [
-        <>
+        <div style={style} key="grafico-2">
             <div className="grafico-topbar">
 
             <h2 className="graphtitle">Quantidade de reportes em: Auditório 1</h2>
@@ -20,8 +24,8 @@ const LineChart = ({data}) => {
                     <div className="label-name">Baixo</div>
                 </div>
             </div>
-            <Chart data={data} className="line-chart"/>
-        </>
+            <Chart data={data} className="line-chart" key="grafico-2-2"/>
+        </div>
     ]
 
 

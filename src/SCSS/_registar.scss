@@ -1,0 +1,66 @@
+.form--wrapper, .form-login--wrapper{
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    height: 100vh;
+    background-color: $veryLightGray;
+    h3{
+        color: $darkGreenColor;
+    }
+    
+
+    h1{
+        text-align: center;    
+        font-size: 1.5rem;
+        color: $primaryColor;
+    }
+
+    h4{
+        color: $primaryColor;
+        margin-bottom: 20px;
+    }
+
+    p{
+        margin-bottom: 30px;
+    }
+}
+
+.form--header{
+    text-align: center;
+}
+
+.form-error{
+    margin-left: 10px;
+    margin-bottom: 4px;
+    font-size: 0.75rem;
+    color: $cRed;
+}
+
+.form-group{
+    input{
+        margin-bottom: 35px;
+        width: 100%;
+    }
+}
+
+.form-box{
+    display: flex;
+}
+
+.form--item{
+    width: 100vw;
+    margin-right: 50px;
+}
+
+.form--link{
+    right: 100px;
+    opacity: 0.6;
+    bottom: 220px;
+    position: absolute;
+    a{
+        color: inherit;
+    }
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: $primaryColor;
+}

@@ -1,79 +1,119 @@
-import React, {useState} from 'react'
+import React, {Component} from 'react'
 import ImageUploader from '../ImageUploader'
 import Button from '../Button'
+import {Redirect} from 'react-router-dom'
+import axios from 'axios'
 
-const CadastrarLocalBox = () => {
-    const [nomeLocal, setNomeLocal] = useState('')
-    const [descricaoLocal, setDescricaoLocal] = useState('')
-    const [imagemLocal, setImagemLocal] = useState(null)
+const styleInput = {
+    fontSize: '0.8125rem',
+    color: '#6f8ea4'
+}
 
-    const handleImage = (e) => {
-        setImagemLocal(e)
+const styleLegend = {
+    fontSize: '0.6875rem',
+    color: 'rgba(44,105,117,0.34)',
+    marginBottom: '15px'
+}
+
+const styleTextArea = {
+    marginRight: '50px'
+}
+
+export default class CadastrarLocalBox extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            nomeLocal: '',
+            descricaoLocal: '',
+            imagemLocal: '',
+            cadastrado: false
+        }
     }
 
-    const styleInput = {
-        fontSize: '0.8125rem',
-        color: '#6f8ea4'
+    handleImage = (e) => {  
+        this.setState({
+            imagemLocal: e
+        })
     }
 
-    const styleLegend = {
-        fontSize: '0.6875rem',
-        color: 'rgba(44,105,117,0.34)',
-        marginBottom: '15px'
+    handleVerification = () => {
+        let isValid = true
+        if (this.state.descricaoLocal === ''){
+            alert('Por favor, adicione uma descrição do local')
+            isValid = false
+        }
+        else if (this.state.nomelocal === ''){
+            alert('Por favor, adicione o nome do local')
+            isValid = false
+        }
+
+        return isValid
+    }
+
+    sendLocal = async (data) =>{
+        try{
+            const res = await axios.post('local/create', data)
+            this.setState({
+                nomeLocal: '',
+                descricaoLocal: '',
+                imagemLocal: '',
+                cadastrado: true
+            })
+        }catch(e){
+            alert(e.data.message)
+        }
     }
 
     // Disparada ao clicar no botão
-    const criarLocal = () =>{
-        if (imagemLocal === null) {
-            alert('Por favor, adicione uma imagem')
-        }
-        else if (descricaoLocal === ''){
-            alert('É obrigatório adicionar uma descrição do local')
-        }
-        else if (nomeLocal === ''){
-            alert('Por favor, adicione o nome do local')
-        }
-        else{
+    criarLocal = () =>{
+        if (this.handleVerification()){
+            const instituicao = localStorage.getItem('instituicao')
             const data = {
-                nome: nomeLocal,
-                descricao: descricaoLocal,
-                imagem: imagemLocal
+                nomelocal: this.state.nomeLocal,
+                descricaolocal: this.state.descricaoLocal,
+                instituicaoID: instituicao
             }
+
+            this.sendLocal(data)
         }
     }
 
-    const styleTextArea = {
-        marginRight: '50px'
+    handleLocalName = (e) =>{
+        this.setState({
+            nomeLocal: e.target.value
+        })
     }
 
-    const handleLocalName = (e) =>{
-        setNomeLocal(e.target.value)
+    handleDescription = (e) =>{
+        this.setState({
+            descricaoLocal: e.target.value
+        })
     }
 
-    const handleDescription = (e) =>{
-        setDescricaoLocal(e.target.value)
-    }
 
-    return (
-        <div key="addLocal">
-            <div className="df sb">
-                <div>
-                    <div style={styleInput}>Nome do Local (max caracteres: 20)</div>
-                    <input type="text" maxLength="20" placeholder="Digite o nome do local" className="inputWidth" onChange={(e) =>handleLocalName(e)}/>
+    render(){
+        if (this.state.cadastrado){
+            return <Redirect to={{pathname: '/home/espacos'}}/>
+        }
+        return (
+            <div key="addLocal">
+                <div className="df sb">
+                    <div>
+                        <div style={styleInput}>Nome do Local (max caracteres: 20)</div>
+                        <input value={this.state.nomeLocal} type="text" maxLength="20" placeholder="Digite o nome do local" className="inputWidth" onChange={(e) => this.handleLocalName(e)}/>
+                        
+                        <div style={styleInput}>Descrição (max caracteres: 70)</div>
+                        <textarea value={this.state.descricaoLocal} style={styleTextArea} cols="50" rows="10" maxLength="70" placeholder="Digite uma breve sobre o local" onChange={(e) => this.handleDescription(e)}/>
+                    </div>
                     
-                    <div style={styleInput}>Descrição (max caracteres: 100)</div>
-                    <textarea style={styleTextArea} cols="50" rows="10" maxLength="100" placeholder="Digite uma descrição sobre o local" onChange={(e) => handleDescription(e)}/>
+                    <div className="uploadFoto">
+                        <div style={styleInput}>Foto do Local (max 5000MB)</div>
+                        <div style={styleLegend}>Dimensões recomendadas: 800x400 (px)</div>
+                        <ImageUploader image={this.state.imagemLocal} onChange={this.handleImage}/>
+                    </div>
                 </div>
-                
-                <div className="uploadFoto">
-                    <div style={styleInput}>Foto do Local (max 5000MB)</div>
-                    <div style={styleLegend}>Dimensões recomendadas: 800x400 (px)</div>
-                    <ImageUploader image={imagemLocal} onChange={handleImage}/>
-                </div>
+                <Button name="adicionar local" onClick={this.criarLocal}/>
             </div>
-            <Button name="adicionar local" onClick={criarLocal}/>
-        </div>
-    )
+        )
+    }
 }
-
-export default CadastrarLocalBox

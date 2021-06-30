@@ -8,7 +8,7 @@ import Instituicao from '../Instituição'
 import Seguranca from '../Segurança'
 
 const ConfiguracoesPage = () => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(options[0])
     const ref = useRef(null);
 
     const estilo = {
