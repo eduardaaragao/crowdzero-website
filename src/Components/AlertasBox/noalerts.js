@@ -1,10 +1,10 @@
 import Whiteboard from '../Whiteboard'
-const NoAlerts = () => {
+const NoAlerts = ({text, width}) => {
     const data = [
-        <h2 key="no-alerts" className="table-title">Não há alertas para mostrar</h2>
+        <h2 key="no-alerts" className="table-title">{text}</h2>
     ]
     return (
-        <Whiteboard width='60%' padding='20px' height='fit-content' data={data} textAlign='center'/>
+        <Whiteboard width={width} padding='20px' height='fit-content' data={data} textAlign='center'/>
     )
 }
 

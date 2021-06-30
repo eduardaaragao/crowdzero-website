@@ -49,6 +49,7 @@ export default class Login extends Component{
             try{
             // Realizar pedido à API
             const res = await axios.post('auth/loginGestor', data)
+
             if (res.data.token)
             {
                  localStorage.setItem('token', res.data.token)
@@ -58,9 +59,11 @@ export default class Login extends Component{
                     loggedIn: true
                 })
                 this.props.setUser(res.data.user)
+            }else{
+                alert('Dados inválidos, tente novamente.')
             }
             }catch(e){
-                console.log(e)
+                alert('Dados inválidos, tente novamente.')
             }
         }
     }

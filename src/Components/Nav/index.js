@@ -21,9 +21,7 @@ export default class Nav extends Component{
                         <div className="header--info">
                             <p className="header--userName">{this.props.user.nome}</p>
                             <p className="header--admin">Administrador</p>
-                        </div>                
-                        
-                        <img className="header--userPhoto" src={`${this.props.user.userImg}`}/>
+                        </div>       
 
                         <div className="header--dropdown">
                             <ExpandMoreIcon/>

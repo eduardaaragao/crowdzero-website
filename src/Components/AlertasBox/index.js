@@ -2,23 +2,26 @@ import '../../CSS/style.css';
 import List from '../AlertasBox/component'
 import Button from '../Button'
 import Wrapper from '../Whiteboard'
+import {Link} from 'react-router-dom'
 
 /* Componente Alerta */
 
-export default({data, onDelete, onClick}) => {
+export default({data, onDelete, show}) => {
   const labels = [
     "Local",
     "Horário",
     "Data",
     "Tipo",
-    "Status",
+    "Ocupação",
     "Marcar como resolvido"
   ]
 
   const statusColors = new Map();
 
-  statusColors.set('Em Desinfeção', 'desinfec')
-  statusColors.set('Alta Ocupação', 'altaocupacao')
+  statusColors.set('DESOCUPADO', 'desinfec')
+  statusColors.set('ALTA', 'altaocupacao')
+  statusColors.set('MÉDIA', 'mediaocupacao')
+  statusColors.set('BAIXA', 'baixaocupacao')
 
   const pageData = [
     <div key="alerta-data">
@@ -35,7 +38,7 @@ export default({data, onDelete, onClick}) => {
         />
         
         <div className="button-align">
-          <Button onClick={onClick} name="Ver mais" colorFrom="#7BE495" colorTo="#329D9C"/>
+          {show === '1' ? <Link to="/home/alertas"><Button name="Ver mais" colorFrom="#7BE495" colorTo="#329D9C"/></Link> : null}
         </div>
     </div>
   ]

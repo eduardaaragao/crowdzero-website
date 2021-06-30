@@ -23,10 +23,4 @@ export default class ComoFunciona extends Component{
             </section>
         )
     }
-}   
-
-/**
-                    
-                                        
-
-                     */
+} 

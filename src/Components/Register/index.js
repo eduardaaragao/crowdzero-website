@@ -3,10 +3,6 @@ import Button from '../Button'
 import axios from 'axios'
 import Nav from '../Nav'
 
-const boxSuccess = [
-    <h1>Enviado com sucesso</h1>
-]
-
 export default class Register extends Component {
     constructor(props){
         super(props)
@@ -101,9 +97,13 @@ export default class Register extends Component {
             axios.post('auth/registoGestor', data).then(
                 res => {
                     console.log(res.data)
-                    this.setState({
-                        isSent: true
-                    })
+                    if (res.data.data.success){
+                        this.setState({
+                            isSent: true
+                        })
+                    }else{
+                        alert('Dados inválidos, tente novamente.')
+                    }
                 }
             ).catch(err =>{
                 alert(err)

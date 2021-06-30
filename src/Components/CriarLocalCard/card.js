@@ -22,7 +22,7 @@ export default class Card extends Component{
                     <p>Ocupação</p>
                     <p>{this.props.data.status}</p>
                 </div>
-                <Linha width={this.props.data.status}/>
+                <Linha estado={this.props.data.status}/>
                 
                 <div className="df"><p style={{color: '#205072', fontWeight: 700}}>Status: </p><p>{this.props.data.status}</p></div>
                 <div className="df sb">

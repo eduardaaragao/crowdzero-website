@@ -682,6 +682,16 @@ nav {
   background-color: rgba(245, 114, 114, 0.12);
 }
 
+.table-row.title.baixaocupacao {
+  color: #47CACC;
+  background-color: rgba(71, 202, 204, 0.12);
+}
+
+.table-row.title.mediaocupacao {
+  color: #FFCF5C;
+  background-color: rgba(255, 207, 92, 0.12);
+}
+
 .table-row.title.place {
   min-width: 105px;
   text-align: left;

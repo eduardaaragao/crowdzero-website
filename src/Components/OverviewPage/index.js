@@ -2,16 +2,11 @@
 import '../../CSS/style.css';
 import React, {Component} from 'react';
 import Alertas from '../AlertasBox';
-import dataAlertas from '../../Files/alertas.json'
 import DataOverview from './dataoverview'
-import dataoverview from '../../Files/dataoverview.json'
 import Dropdown from '../Dropdown/'
 import GraficoReportes from '../Charts/BarChart'
 import NoAlerts from '../AlertasBox/noalerts'
-import pieData from '../../Files/reportados.json'
 import GraficoMaisReportados from '../Charts/PieChart'
-import GraficoLocal from '../Charts/LineChart'
-import DataLineChart from '../../Files/lineChart.json'
 import axios from 'axios'
 
 const filtros = [{
@@ -28,7 +23,6 @@ const filtros = [{
 }
 ]
 
-
 export default class OverviewPage extends Component{ 
     constructor(props){
         super(props)
@@ -38,15 +32,42 @@ export default class OverviewPage extends Component{
             date: '',
             alertas: [],
             data_reportes: [],
-            pieChartData: pieData,
-            lineChartData: DataLineChart,
-            updated: false
+            pieChartData: [],
+            updated: false,
+            dataoverview: []
         }
     }
 
+    onResolve = (id) => {
+        this.setState({
+            alertas: this.state.alertas.filter((alerta)=> alerta.id !== id)
+        })
+        this.deleteAlerta(id)
+    }
+
+    getMaisReportados = async () => {
+        const id = localStorage.getItem('instituicao')
+
+        try{
+            const res = await axios.get('local/locaisMaisReporte', {params: {id}})
+            if (res){
+                this.setState({
+                    pieChartData: res.data.data
+                })
+            }
+        }catch(e){
+            alert(e)
+        }
+    }
+ 
     // Deletar alerta
-    deleteAlerta = (id) =>{
-       // setAlertas(alertas.filter((alerta)=> alerta.id !== id))
+    deleteAlerta = async (id) =>{
+        try{
+            const res = await axios.post('alerta/checkAlerta', {id})
+            console.log(res)
+        }catch(e){
+            console.log(e)
+        }
     }
 
     setAlertas = (e) => {
@@ -55,6 +76,7 @@ export default class OverviewPage extends Component{
         })
     }
 
+    // Obter dados dos alertas
     getAlertas = async () => {
         let id = localStorage.getItem('instituicao')
         const data = {
@@ -67,18 +89,19 @@ export default class OverviewPage extends Component{
                 this.setAlertas(res.data.data)
             }
         }catch(e){
-            console.log("ERRO => ", e)
+            alert("ERRO => ", e)
         }
 
     }
 
+    // Obter dados do gráfico
     getGraficoReporte = async () => {
         let id = localStorage.getItem('instituicao')
         let filter = this.state.filter
         let date = this.state.date
 
         if (this.state.filter){
-            filter = this.state.filter
+            filter = this.state.filter.id
         }
 
         if (this.state.date){
@@ -86,18 +109,16 @@ export default class OverviewPage extends Component{
         }
 
         const data = {
-            id: id,
-            filtro: filter,
-            date: date
+            data: date
         }
 
         try{
-            const res = await axios.get('reporte/getGrafico', {params: data})
+            const res = await axios.post('reporte/getGrafico', {data}, {params: {filter, id}})
             if (res.data.success){
                 this.setGraficoReporte(res.data.data)
             }
         }catch(e){
-            console.log("ERRO => ", e)
+            alert("ERRO => ", e)
         }
     }
 
@@ -113,8 +134,24 @@ export default class OverviewPage extends Component{
         })
     }
 
+    getOverview = async () => {
+        const id = localStorage.getItem('instituicao')
+
+        try{
+           const data = await axios.get('instituicao/getDadosOverview', {params: {id}})
+           this.setState({
+               dataoverview: data.data.data
+           })
+
+        }catch(e){
+            alert(e)
+        }
+    }
+
     componentDidMount(){
         this.getGraficoReporte()
+        this.getMaisReportados()
+        this.getOverview()
         this.getAlertas()
     }
 
@@ -124,10 +161,6 @@ export default class OverviewPage extends Component{
             this.getAlertas()
             this.handleUpdate()
         }
-    }
-
-    onClick = () =>{
-        console.log('Clicked')
     }
 
     setFiltro = (e) => {
@@ -145,6 +178,7 @@ export default class OverviewPage extends Component{
          this.handleUpdate()
     }
 
+
     render(){
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
         return(
@@ -152,14 +186,17 @@ export default class OverviewPage extends Component{
                 <h1>Dados em Tempo real</h1>
                 <p>Você pode filtrar por <b>locais</b>, <b>ocupação</b> (baixa, média, alta) e por <b>período</b> (semana, mês).</p>
     
-                <DataOverview data={dataoverview}/>
-    
+                
+                <DataOverview data={this.state.dataoverview}/>
+                
                 <Dropdown options={filtros} id="id" label="filtro" value={this.state.filter} onChange={this.setFiltro} prompt="Selecionar filtro" onDateChange={this.setDataFiltro}/>
     
                 <div className="overview--charts">
-                    <GraficoReportes data={this.state.data_reportes}/>
-    
-                    <GraficoLocal data={this.state.lineChartData}/>
+                    <GraficoReportes data={this.state.data_reportes}/> 
+
+                    {this.state.pieChartData.length > 0 ? 
+                     <GraficoMaisReportados data={this.state.pieChartData}/>
+                    : <NoAlerts text="Não há dados suficientes para este gráfico" width='290px'/>}
                 </div>
     
                 <hr className="divisor-horizontal"/>
@@ -168,9 +205,8 @@ export default class OverviewPage extends Component{
     
                 <div className="overview--statistics">
                     {this.state.alertas.length > 0 ? 
-                    <Alertas data={this.state.alertas} onDelete={this.deleteAlerta} onClick={this.onClick}/> 
-                    : <NoAlerts/>}
-                    <GraficoMaisReportados data={this.state.pieChartData}/>
+                    <Alertas data={this.state.alertas} onDelete={this.onResolve} show='1'/> 
+                    : <NoAlerts text="Não há alertas" width='60%'/>}                   
                 </div>
             </section>
         )

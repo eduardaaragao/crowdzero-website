@@ -2,23 +2,13 @@ import React from 'react'
 
 const LinhaOcupacao = ({estado}) => {
 
-    /*function getColor(){
-        if (ocupacao === 'alto'){
-            return '#82D197'
-        }else if(ocupacao === 'medio'){
-            return '#FFCF5C'
-        }else{
-            return '#F57272'
-        }
-    }*/
-
     function getColor(){
-        if (estado === 1){
-            return '#F57272'
-        }else if (estado === 2){
+        if (estado === 'Baixa'){
+            return '#82D197'
+        }else if(estado === 'Média'){
             return '#FFCF5C'
         }else{
-            return '#82D197'
+            return '#F57272'
         }
     }
 
@@ -29,7 +19,6 @@ const LinhaOcupacao = ({estado}) => {
         marginBottom: '22px',
         position: 'relative',
         width: '100%'
-       // width: `${width}`
     }
 
     const styleUpperLine = {

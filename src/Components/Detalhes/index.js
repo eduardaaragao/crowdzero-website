@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Whiteboard from '../Whiteboard'
 import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
 import Calendar from '@material-ui/icons/DateRange';
@@ -7,7 +6,6 @@ import Circulo from '../Circulo'
 import LanguageIcon from '@material-ui/icons/Language';
 import TranslateIcon from '@material-ui/icons/Translate';
 import PhoneIcon from '@material-ui/icons/Phone';
-import UserDetalhes from '../../Files/detalhes.json'
 import axios from 'axios'
 
 export default class Detalhes extends Component {
@@ -52,10 +50,6 @@ render(){
     return (
         <div className="configuracoes--page">
             <h3>Detalhes da Conta</h3>
-            
-            <div className="imagem-perfil">
-                <img className="header--userPhoto" src={`${UserDetalhes.imagem}`}/>
-            </div>
 
             <div className="whiteboard">
             <div className="df sb" key="dataDetalhes">       
@@ -104,8 +98,8 @@ render(){
             <div className="df">
                 <Circulo icon={PhoneIcon} color="#CDB3D4" key="6"/>
                  <div>
-                     <div style={{color: "#2C6975", fontWeight:"600"}}>{UserDetalhes.telemovel}</div>
-                     <div style={{color: "#6D7278", fontSize: "0.875rem"}}>Telemóvel para contacto</div>
+                     <div style={{color: "#2C6975", fontWeight:"600"}}>{this.state.email}</div>
+                     <div style={{color: "#6D7278", fontSize: "0.875rem"}}>Contacto</div>
                 </div>
             </div>
         </div>

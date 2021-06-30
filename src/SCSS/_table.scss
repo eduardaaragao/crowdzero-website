@@ -51,6 +51,16 @@
             background-color: rgba($color: #F57272, $alpha: 0.12);
         }
 
+        &.baixaocupacao{
+          color: $cGreen;
+          background-color: rgba($color: $cGreen, $alpha: 0.12);
+        }
+
+        &.mediaocupacao{
+          color: $cYellow;
+          background-color: rgba($color: $cYellow, $alpha: 0.12);
+        }
+
         &.place{
             min-width: 105px;
             text-align: left;

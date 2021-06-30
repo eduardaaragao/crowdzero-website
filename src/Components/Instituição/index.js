@@ -26,11 +26,12 @@ export default class Instituicao extends Component {
 
         try{
             const res = await axios.get('instituicao/get', {params: {id}})
-            console.log(res.data)
             this.setState({
-                nome: res.data.data.nome,
+                nome: res.data.data.nome_instituicao,
                 associados: res.data.data.qnt_associados,
-                espacos: res.data.data.qnt_espacos
+                espacos: res.data.data.qnt_espacos,
+                endereco: res.data.data.latitude,
+                cep: res.data.data.longitude
             })
         }catch(e){
             console.log(e)

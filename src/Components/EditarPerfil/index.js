@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import user from '../../Files/user.json'
 import Button from '../Button'
 import axios from 'axios'
 
@@ -38,7 +37,6 @@ const EditarPerfil = () => {
     return (
         <div className="configuracoes--page">
             <h3>Editar Perfil</h3>
-            <img className="header--userPhoto" src={`${user.userImg}`}/>
             <br/>
             
             <input className="input--configuracoes" value={primeiroNome} placeholder="Primeiro Nome" onChange={(e) => setprimeiroNome(e.target.value)}/>

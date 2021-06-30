@@ -20,5 +20,3 @@ export default class BoxContainer extends Component {
         )
     }
 }
-
-/** className="box--container" */

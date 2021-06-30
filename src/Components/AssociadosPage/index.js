@@ -8,8 +8,7 @@ export default class AssociadosPage extends Component {
         super(props)
         this.state = {
             associados: [],
-            filter: '',
-            updated: false           
+            filter: '',     
         }
     }
 
@@ -36,34 +35,23 @@ export default class AssociadosPage extends Component {
         this.getAssociados()
     }
 
-    handleUpdate = () => {
-        this.setState({
-            updated: !this.state.updated
-        })
-    }
-    
-    componentDidUpdate(){
-        if (this.state.updated){
-            this.getAssociados()
-            this.handleUpdate()
-        }
-    }
-
     onChange = (e) => {
         this.setState({filter: e.target.value})
     }
 
-    onDelete = async (e) => {
-        const data = {
-            id: e
-        }
-
+    onDelete = async (id) => {
         try{
-            await axios.post('associado/delete', data)
+            await axios.delete('associacao/deleteAssociado', {params: {id}})
         }catch(e){
             alert(e)
         }
-        this.handleUpdate()
+    }
+    
+    onResolve = (id) => {
+        this.setState({
+            associados: this.state.associados.filter((associado)=> associado.id !== id)
+        })
+        this.onDelete(id)
     }
 
     render() {
@@ -102,7 +90,7 @@ export default class AssociadosPage extends Component {
                                     <td>{data.reportes}</td>
                                     <td>{data.ultimo}</td>
                                     <td>
-                                       <Button onClick={() => this.onDelete(data.id)} colorFrom='#F57272' colorTo='#F57272' name="Remover"/>
+                                       <Button onClick={() => this.onResolve(data.id)} colorFrom='#F57272' colorTo='#F57272' name="Remover"/>
                                     </td>
                                 </tr>
                             )
@@ -113,6 +101,3 @@ export default class AssociadosPage extends Component {
         )
     }
 }
-
-/**
-                         */

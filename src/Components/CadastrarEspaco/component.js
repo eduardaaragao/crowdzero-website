@@ -63,8 +63,7 @@ export default class CadastrarLocalBox extends Component {
             alert(e.data.message)
         }
     }
-
-    // Disparada ao clicar no botão
+    
     criarLocal = () =>{
         if (this.handleVerification()){
             const instituicao = localStorage.getItem('instituicao')
