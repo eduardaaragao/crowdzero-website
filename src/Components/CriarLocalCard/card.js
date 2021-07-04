@@ -4,6 +4,15 @@ import Linha from '../OcupacaoLine'
 import axios from 'axios'
 
 export default class Card extends Component{
+    constructor(props){
+        super(props)
+
+        this.state = {
+            percentagem: 0,
+            status:  'Sem Status',
+            width: '0'
+        }
+    }
     onDelete = async () => {
        try{
            await axios.post('local/delete', this.props.data)
@@ -13,42 +22,50 @@ export default class Card extends Component{
        this.props.updated()
     }
 
+    getWidth = () => {
+        let status = '0'
+        let estado = this.props.data.status
+        if (estado === 0){
+            status = '0'
+        }else if (estado === 1){
+            status =  '25'
+        }else if (estado === 2){
+            status = '60'
+        }else if (estado === 3){
+            status =  '90'
+        }else if (estado === 4){
+            status = '100'
+        }
+
+        this.setState({
+            width: status
+        })
+    }
+
     getStatus = async () => {
         let status = this.props.data.status
+        let verificar = status
 
         if (status === 0){
-            return "Sem Ocupação"
+            verificar = "Sem Ocupação"
         }else if (status === 1){
-            return "Baixa"
+            verificar = "Baixa"
         }else if (status === 2){
-            return "Média"
+            verificar = "Média"
         }else if (status === 3){
-            return "Alta"
+            verificar = "Alta"
         }else if (status ===4){
-            return "Em Desinfeção"
-        }
-    }
-
-    getOcupacao = async () => {
-        let alto = this.props.data.qtde_reporte_alto 
-        let medio = this.props.data.qtd_reporte_baixo 
-        let baixo = this.props.data.qtd_reporte_medio
-        let maior = alto
-
-        if (medio > maior){
-            maior = medio
-        }else if (baixo > maior){
-            maior = baixo
+            verificar = "Em Desinfeção"
         }
 
-        return maior
+        this.setState({
+            status: verificar
+        })
     }
 
-    getPorcentagem = async() => {
-        let soma = this.props.data.qtde_reporte_alto + this.props.data.qtd_reporte_baixo + this.props.data.qtd_reporte_medio
-        let maior = this.getOcupacao()
-
-        return (maior / soma) * 100
+    componentDidMount(){
+        this.getStatus()
+        this.getWidth()
     }
 
     render(){
@@ -58,11 +75,11 @@ export default class Card extends Component{
                 <p style={{color: '#2C6975'}}>{this.props.data.descricao}.</p>
                 <div className="df sb">
                     <p>Ocupação</p>
-                    <p>{this.getOcupacao}</p>
+                    <b><p>{this.state.width}%</p></b>
                 </div>
-                <Linha estado={this.getStatus}/>
+                <Linha estado={this.state.status} width={this.state.width}/>
                 
-                <div className="df"><p style={{color: '#205072', fontWeight: 700}}>Status: </p><p>{this.props.data.status}</p></div>
+                <div className="df"><p style={{color: '#205072', fontWeight: 700}}>Status: </p><p>{this.state.status}</p></div>
                 <div className="df sb">
                     <Button name="apagar" onClick={this.onDelete} colorFrom="#F57272" colorTo="#8D2424" padding='10px'/>
                 </div>

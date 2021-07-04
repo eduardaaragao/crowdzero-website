@@ -1,13 +1,15 @@
 import React from 'react'
 
-const LinhaOcupacao = ({estado}) => {
+const LinhaOcupacao = ({estado, width}) => {
 
     function getColor(){
-        if (estado === 1){
+        if (estado === 'Baixa'){
             return '#82D197'
-        }else if(estado === 2){
+        }else if(estado === 'Média'){
             return '#FFCF5C'
-        }else{
+        }else if (estado === 'Alta'){
+            return '#F57272'
+        }else if (estado === 'Em Desinfeção'){
             return '#F57272'
         }
     }
@@ -18,7 +20,7 @@ const LinhaOcupacao = ({estado}) => {
         borderRadius: '6px',
         marginBottom: '22px',
         position: 'relative',
-        width: '100%'
+        width: `${width}%`
     }
 
     const styleUpperLine = {
