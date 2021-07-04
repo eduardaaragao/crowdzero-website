@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import kalu from '../../Files/images/kalu.PNG'
+import kalu from '../../Files/images/kalu.png'
 import gustavo from '../../Files/images/gustavo.jpeg'
 import marialice from '../../Files/images/marialice.PNG'
 import mariaeduarda from '../../Files/images/mariaeduarda.jpeg'
