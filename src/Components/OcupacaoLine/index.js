@@ -3,9 +3,9 @@ import React from 'react'
 const LinhaOcupacao = ({estado}) => {
 
     function getColor(){
-        if (estado === 'Baixa'){
+        if (estado === 1){
             return '#82D197'
-        }else if(estado === 'Média'){
+        }else if(estado === 2){
             return '#FFCF5C'
         }else{
             return '#F57272'
