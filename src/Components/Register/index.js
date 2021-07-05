@@ -96,13 +96,10 @@ export default class Register extends Component {
             // Fazer Pedido à API
             axios.post('auth/registoGestor', data).then(
                 res => {
-                    console.log(res.data)
-                    if (res.data.data.success){
+                    if (res.data.data){
                         this.setState({
                             isSent: true
                         })
-                    }else{
-                        alert('Dados inválidos, tente novamente.')
                     }
                 }
             ).catch(err =>{
