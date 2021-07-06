@@ -17,7 +17,8 @@ export default class Instituicao extends Component {
             endereco: '',
             cep: '',
             associados: '',
-            espacos: ''
+            espacos: '',
+            token: ''
         })
     }
 
@@ -31,7 +32,8 @@ export default class Instituicao extends Component {
                 associados: res.data.data.qnt_associados,
                 espacos: res.data.data.qnt_espacos,
                 endereco: res.data.data.latitude,
-                cep: res.data.data.longitude
+                cep: res.data.data.longitude,
+                token: res.data.data.token_acesso
             })
         }catch(e){
             console.log(e)
@@ -62,8 +64,8 @@ export default class Instituicao extends Component {
                         <div className="df">
                             <Circulo icon={MapIcon} color="#E7B7C8" key="2"/>
                                 <div>
-                                    <div style={{color: "#2C6975", fontWeight:"600"}}>{this.state.endereco}</div>
-                                    <div style={{color: "#6D7278", fontSize: "0.875rem"}}>Endereço</div>
+                                    <div style={{color: "#2C6975", fontWeight:"600"}}>{this.state.token}</div>
+                                    <div style={{color: "#6D7278", fontSize: "0.875rem"}}>Token de Acesso</div>
                                 </div>
                         </div>
     
