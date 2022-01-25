@@ -14,8 +14,8 @@ A aplicação web entra como o backoffice desta tecnologia, sendo possível gere
 http://crowdzero-frontend.herokuapp.com
 
 ### IMAGENS DO WEBSITE
-<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/crowdzero_landing_page.png"></img>>
+<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/crowdzero_landing_page.png"></img>
 <img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/login_screen.png"></img>
-<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/login_screen.png"></img
-<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/cadastrar_espaco.png"></img
-<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/configuracoes_page.png"></img
+<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/login_screen.png"></img>
+<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/cadastrar_espaco.png"></img>
+<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/configuracoes_page.png"></img>
