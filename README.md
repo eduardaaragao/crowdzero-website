@@ -1,4 +1,6 @@
+
 ### PROJETO INTEGRADO - CROWDZERO
+<img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/apresentacao.png"></img
 CrowdZero é uma plataforma requisitada pela empresa de tecnologia Biz Direct. Juntamente com a app, esta tecnologia fornece ao usuário a possibilidade de avaliar, em uma escala de 1 a 3, a densidade populacional ao seu redor, nomeadamente da instituição que está associado.
 
 A aplicação web entra como o backoffice desta tecnologia, sendo possível gerenciar e ter acesso a todos os dados publicados pelos utilizadores. Veja aqui abaixo algumas das diversas funcionalidades implementadas no website:
@@ -17,4 +19,3 @@ http://crowdzero-frontend.herokuapp.com
 <img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/login_screen.png"></img
 <img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/cadastrar_espaco.png"></img
 <img src="https://github.com/eduardaaragao/crowdzero-website/blob/main/screenshots/configuracoes_page.png"></img
-
